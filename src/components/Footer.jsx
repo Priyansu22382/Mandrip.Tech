@@ -1,18 +1,10 @@
+import { Link } from 'react-router-dom'
 import { Mail, MessageCircle } from 'lucide-react'
 import Logo from './Logo'
 import { LinkedInIcon } from './icons'
 import { services } from '../data/services'
 import { contactInfo } from '../data/pricing'
-
-const navLinks = [
-  { label: 'Home', href: '#home' },
-  { label: 'What We Do', href: '#what-we-do' },
-  { label: 'Services', href: '#services' },
-  { label: 'Our Work', href: '#work' },
-  { label: 'About', href: '#about' },
-  { label: 'Pricing', href: '#pricing' },
-  { label: 'Contact', href: '#contact' },
-]
+import { footerLinks } from '../data/routes'
 
 export default function Footer() {
   const year = new Date().getFullYear()
@@ -28,7 +20,7 @@ export default function Footer() {
               e-commerce platforms and business systems — then maintains and
               scales them for ambitious companies.
             </p>
-            <p className="mt-6 text-sm font-semibold tracking-wide text-accent-bright">
+            <p className="mt-6 text-sm font-semibold tracking-wide text-accent">
               We Build. We Maintain. We Scale.
             </p>
           </div>
@@ -38,14 +30,14 @@ export default function Footer() {
               Navigate
             </h3>
             <ul className="mt-5 space-y-3">
-              {navLinks.map((link) => (
-                <li key={link.href}>
-                  <a
-                    href={link.href}
+              {footerLinks.map((link) => (
+                <li key={link.path}>
+                  <Link
+                    to={link.path}
                     className="text-sm text-mist transition-colors hover:text-snow"
                   >
                     {link.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -58,12 +50,12 @@ export default function Footer() {
             <ul className="mt-5 space-y-3">
               {services.slice(0, 8).map((service) => (
                 <li key={service.id}>
-                  <a
-                    href="#services"
+                  <Link
+                    to="/services"
                     className="text-sm text-mist transition-colors hover:text-snow"
                   >
                     {service.title}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>

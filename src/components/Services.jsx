@@ -2,6 +2,7 @@ import { motion } from 'framer-motion'
 import { ArrowUpRight } from 'lucide-react'
 import SectionHeading from './SectionHeading'
 import { services } from '../data/services'
+import { Link } from 'react-router-dom'
 import { useReducedMotion } from '../hooks/useReducedMotion'
 
 export default function Services() {
@@ -54,8 +55,8 @@ export default function Services() {
                   </ul>
                 )}
 
-                <a
-                  href="#contact"
+                <Link
+                  to="/contact"
                   className="mt-auto inline-flex items-center gap-1.5 pt-6 text-sm font-bold text-accent transition-colors hover:text-accent-bright"
                 >
                   Discuss This Service
@@ -63,7 +64,7 @@ export default function Services() {
                     size={16}
                     className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
                   />
-                </a>
+                </Link>
               </motion.article>
             )
           })}

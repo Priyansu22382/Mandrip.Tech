@@ -152,11 +152,11 @@ export default function Hero() {
           </motion.p>
 
           <motion.div className="mt-9 flex flex-wrap gap-3" {...fadeUp(0.26)}>
-            <Button href="#contact">
+            <Button section="contact">
               Start Your Project
               <Play size={14} fill="currentColor" />
             </Button>
-            <Button href="#work" variant="secondary">
+            <Button section="work" variant="secondary">
               Explore Our Work
               <ArrowUpRight size={16} />
             </Button>

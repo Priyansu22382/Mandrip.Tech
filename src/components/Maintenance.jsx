@@ -23,7 +23,7 @@ export default function Maintenance() {
             title="Your Website Doesn't Stop Growing. Neither Should We."
             description="Launch is only the beginning. We stay involved with security updates, bug fixes, content changes, performance checks and technical support — so your website or application remains reliable as your business evolves."
           />
-          <Button href="#contact" variant="light">
+          <Button section="contact" variant="light">
             Explore Maintenance Plans
           </Button>
         </div>

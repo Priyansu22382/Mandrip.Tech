@@ -1,5 +1,7 @@
 import { motion } from 'framer-motion'
+import { useNavigate } from 'react-router-dom'
 import { useReducedMotion } from '../hooks/useReducedMotion'
+import { getPathBySection } from '../data/routes'
 
 const variants = {
   primary:
@@ -13,13 +15,16 @@ const variants = {
 
 export default function Button({
   children,
-  href = '#contact',
+  section,
+  href,
+  to,
   variant = 'primary',
   className = '',
   type,
   onClick,
   disabled = false,
 }) {
+  const navigate = useNavigate()
   const reduced = useReducedMotion()
   const classes = `inline-flex items-center justify-center gap-2 rounded-full px-6 py-3.5 text-sm font-bold tracking-wide transition-colors duration-300 disabled:cursor-not-allowed disabled:opacity-60 ${variants[variant]} ${className}`
 
@@ -30,7 +35,17 @@ export default function Button({
         whileTap: { scale: 0.98 },
       }
 
-  if (type) {
+  const targetPath = to || (section ? getPathBySection(section) : null)
+
+  const handleClick = (event) => {
+    if (targetPath) {
+      event.preventDefault()
+      navigate(targetPath)
+    }
+    onClick?.(event)
+  }
+
+  if (type === 'submit' || type === 'reset') {
     return (
       <motion.button
         type={type}
@@ -44,9 +59,37 @@ export default function Button({
     )
   }
 
+  if (targetPath) {
+    return (
+      <motion.button
+        type="button"
+        className={classes}
+        onClick={handleClick}
+        disabled={disabled}
+        {...motionProps}
+      >
+        {children}
+      </motion.button>
+    )
+  }
+
+  if (href) {
+    return (
+      <motion.a href={href} className={classes} onClick={onClick} {...motionProps}>
+        {children}
+      </motion.a>
+    )
+  }
+
   return (
-    <motion.a href={href} className={classes} onClick={onClick} {...motionProps}>
+    <motion.button
+      type="button"
+      className={classes}
+      onClick={onClick}
+      disabled={disabled}
+      {...motionProps}
+    >
       {children}
-    </motion.a>
+    </motion.button>
   )
 }

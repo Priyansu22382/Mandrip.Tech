@@ -24,7 +24,7 @@ export default function WhatWeDo() {
               highlight="reliable digital solutions"
             />
             <div className="mb-14 md:mb-20 lg:justify-self-end">
-              <Button href="#process">
+              <Button section="process">
                 See How We Work
                 <ArrowUpRight size={16} />
               </Button>

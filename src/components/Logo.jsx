@@ -1,3 +1,5 @@
+import { useNavigate } from 'react-router-dom'
+
 function LogoMark({ className = '' }) {
   return (
     <svg
@@ -34,10 +36,13 @@ export default function Logo({
   showWordmark = true,
   markClassName = 'h-10 w-10',
 }) {
+  const navigate = useNavigate()
+
   return (
-    <a
-      href="#home"
-      className={`group inline-flex items-center gap-3 ${className}`}
+    <button
+      type="button"
+      onClick={() => navigate('/home')}
+      className={`group inline-flex items-center gap-3 text-left ${className}`}
       aria-label="MANDRIP home"
     >
       <span className="relative shrink-0 transition-transform duration-300 group-hover:scale-[1.03]">
@@ -54,7 +59,7 @@ export default function Logo({
           </span>
         </span>
       )}
-    </a>
+    </button>
   )
 }
 

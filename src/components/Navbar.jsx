@@ -1,22 +1,17 @@
 import { useEffect, useState } from 'react'
+import { Link, useLocation } from 'react-router-dom'
 import { AnimatePresence, motion } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
 import Logo from './Logo'
 import Button from './Button'
 import { useReducedMotion } from '../hooks/useReducedMotion'
-
-const links = [
-  { label: 'Home', href: '#home' },
-  { label: 'Services', href: '#services' },
-  { label: 'Our Work', href: '#work' },
-  { label: 'About', href: '#about' },
-  { label: 'Contact', href: '#contact' },
-]
+import { navLinks } from '../data/routes'
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
   const reduced = useReducedMotion()
+  const location = useLocation()
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 16)
@@ -32,6 +27,10 @@ export default function Navbar() {
     }
   }, [open])
 
+  useEffect(() => {
+    setOpen(false)
+  }, [location.pathname])
+
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
@@ -46,20 +45,25 @@ export default function Navbar() {
         </div>
 
         <ul className="hidden items-center gap-7 xl:gap-8 lg:flex">
-          {links.map((link) => (
-            <li key={link.href}>
-              <a
-                href={link.href}
-                className="whitespace-nowrap text-sm font-medium text-mist transition-colors duration-200 hover:text-accent"
-              >
-                {link.label}
-              </a>
-            </li>
-          ))}
+          {navLinks.map((link) => {
+            const isActive = location.pathname === link.path
+            return (
+              <li key={link.path}>
+                <Link
+                  to={link.path}
+                  className={`whitespace-nowrap text-sm font-medium transition-colors duration-200 ${
+                    isActive ? 'text-accent' : 'text-mist hover:text-accent'
+                  }`}
+                >
+                  {link.label}
+                </Link>
+              </li>
+            )
+          })}
         </ul>
 
         <div className="hidden justify-self-end lg:block">
-          <Button href="#contact" className="!px-5 !py-2.5">
+          <Button to="/contact" className="!px-5 !py-2.5">
             Let&apos;s Talk
           </Button>
         </div>
@@ -91,23 +95,23 @@ export default function Navbar() {
               exit={{ y: 8, opacity: 0 }}
               transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
             >
-              {links.map((link) => (
-                <li key={link.href}>
-                  <a
-                    href={link.href}
-                    className="block rounded-2xl px-4 py-4 text-2xl font-semibold text-snow transition-colors hover:bg-white/5"
-                    onClick={() => setOpen(false)}
-                  >
-                    {link.label}
-                  </a>
-                </li>
-              ))}
+              {navLinks.map((link) => {
+                const isActive = location.pathname === link.path
+                return (
+                  <li key={link.path}>
+                    <Link
+                      to={link.path}
+                      className={`block rounded-2xl px-4 py-4 text-2xl font-semibold transition-colors hover:bg-white/5 ${
+                        isActive ? 'text-accent' : 'text-snow'
+                      }`}
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                )
+              })}
               <li className="pt-4">
-                <Button
-                  href="#contact"
-                  className="w-full"
-                  onClick={() => setOpen(false)}
-                >
+                <Button to="/contact" className="w-full">
                   Let&apos;s Talk
                 </Button>
               </li>

@@ -58,7 +58,7 @@ export default function Pricing() {
 
               <div className="mt-auto pt-8">
                 <Button
-                  href="#contact"
+                  section="contact"
                   variant={plan.featured ? 'primary' : 'secondary'}
                   className="w-full"
                 >
@@ -74,7 +74,7 @@ export default function Pricing() {
             Final pricing depends on project requirements and scope.
           </p>
           <div className="mt-5">
-            <Button href="#contact" variant="secondary">
+            <Button section="contact" variant="secondary">
               Get a Custom Quote
             </Button>
           </div>

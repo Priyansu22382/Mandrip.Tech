@@ -27,7 +27,7 @@ export default function Portfolio() {
             description="Explore the types of projects we build — business websites, e-commerce platforms, custom applications, dashboards and redesigns. Demo concepts until live client work is published."
             highlight="Recent Work."
           />
-          <Button href="#contact" className="shrink-0 self-start lg:mt-2">
+          <Button section="contact" className="shrink-0 self-start lg:mt-2">
             Explore Our Work
             <ArrowUpRight size={16} />
           </Button>
