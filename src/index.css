@@ -1,0 +1,89 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
+
+  --color-ink: #050505;
+  --color-ink-soft: #0c0c0c;
+  --color-ink-muted: #141414;
+  --color-panel: #171717;
+  --color-line: #262626;
+  --color-mist: #a3a3a3;
+  --color-snow: #f7f7f5;
+  --color-snow-soft: #e8e8e6;
+  --color-accent: #b6ff3c;
+  --color-accent-bright: #c8ff66;
+  --color-accent-deep: #3f6212;
+  --color-on-accent: #050505;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
+  body {
+    @apply bg-ink font-sans text-snow antialiased;
+    color-scheme: dark;
+    overflow-x: hidden;
+  }
+
+  select option {
+    background-color: #0c0c0c;
+    color: #f7f7f5;
+  }
+
+  ::selection {
+    @apply bg-accent/40 text-on-accent;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .section-pad {
+    @apply px-5 py-24 sm:px-8 md:px-12 lg:px-16 lg:py-32;
+  }
+
+  .container-max {
+    @apply mx-auto w-full max-w-7xl;
+  }
+
+  .glow-orb {
+    background: radial-gradient(circle, rgba(182, 255, 60, 0.16) 0%, transparent 68%);
+  }
+
+  .glow-orb-soft {
+    background: radial-gradient(circle, rgba(182, 255, 60, 0.08) 0%, transparent 70%);
+  }
+
+  .grid-fade {
+    background-image:
+      linear-gradient(to right, rgba(182, 255, 60, 0.045) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(182, 255, 60, 0.045) 1px, transparent 1px);
+    background-size: 72px 72px;
+    mask-image: radial-gradient(ellipse at center, black 15%, transparent 72%);
+  }
+
+  .pill-tag,
+  .pill-tag-light {
+    @apply inline-flex items-center rounded-full bg-accent px-4 py-1.5 text-[11px] font-bold tracking-[0.18em] text-on-accent uppercase;
+  }
+}

@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 64" fill="none" role="img" aria-label="MANDRIP Digital Technologies">
+  <rect width="64" height="64" rx="16" fill="#111111"/>
+  <rect x="1" y="1" width="62" height="62" rx="15" stroke="#B6FF3C" stroke-opacity="0.28" stroke-width="1"/>
+  <path
+    d="M16 46V20L32 36L48 20V46"
+    stroke="#B6FF3C"
+    stroke-width="5.5"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+
+  <text
+    x="84"
+    y="30"
+    fill="#F7F7F5"
+    font-family="Manrope, Arial, Helvetica, sans-serif"
+    font-size="22"
+    font-weight="800"
+    letter-spacing="4"
+  >MANDRIP</text>
+  <text
+    x="84"
+    y="48"
+    fill="#A3A3A3"
+    font-family="Manrope, Arial, Helvetica, sans-serif"
+    font-size="9"
+    font-weight="600"
+    letter-spacing="2.6"
+  >DIGITAL TECHNOLOGIES</text>
+</svg>
